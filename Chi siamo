@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scopri la storia di xFoW Gaming - 15 anni di passione, competizione e community nel gaming italiano.">
+    <title>Chi Siamo - xFoW Gaming | La Nostra Storia</title>
+    
+    <!-- Font Awesome per icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-blue: #00d4ff;
+            --accent-green: #00ff88;
+            --accent-red: #ff0040;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --italy-green: #009246;
+            --italy-red: #ce2b37;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* Navbar (stesso stile della homepage) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+            background: linear-gradient(135deg, var(--italy-green), white, var(--italy-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 400"><rect fill="%230a0a0a"/><g opacity="0.1"><path fill="%2300d4ff" d="M0 200L80 180L160 220L240 190L320 210L400 200L480 180L560 220L640 190L720 210L800 200L880 180L960 220L1040 190L1120 210L1200 200L1280 180L1360 220L1440 190L1520 210L1600 200L1680 180L1760 220L1840 190L1920 210V400H0V200Z"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+        }
+
+        /* Content Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section:nth-child(even) {
+            background: var(--secondary-dark);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--italy-green), white, var(--italy-red));
+        }
+
+        /* Story Section */
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .story-text {
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .story-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .story-image {
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark));
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .story-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-box {
+            background: var(--primary-dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: var(--primary-dark);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .value-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Mission Section */
+        .mission-content {
+            max-width: 800px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+        .mission-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .mission-highlight {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin: 2rem 0;
+        }
+
+        /* Partnership Section */
+        .partnership-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .partnership-logo {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+
+        .partnership-logo i {
+            font-size: 5rem;
+            color: var(--accent-blue);
+        }
+
+        .partnership-details {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .partnership-title {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .partnership-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .partnership-benefits {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .partnership-benefits li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+
+        .partnership-benefits li i {
+            color: var(--accent-green);
+            margin-right: 1rem;
+        }
+
+        /* Team Photos Section */
+        .team-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .team-photo {
+            background: var(--secondary-dark);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .team-photo i {
+            font-size: 4rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .team-photo-caption {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark));
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 2px solid var(--accent-blue);
+            border-bottom: 2px solid var(--accent-blue);
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+
+            .partnership-content {
+                flex-direction: column;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">xFoW</div>
+                <span>xFoW Gaming</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">Chi Siamo</a></li>
+                <li><a href="teams.html">Teams</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="contact.html">Contatti</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Chi Siamo</h1>
+        <p class="page-subtitle">15 anni di passione, competizione e community</p>
+    </div>
+
+    <!-- Story Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">La Nostra Storia</h2>
+            
+            <div class="story-content">
+                <div class="story-text">
+                    <p>
+                        <strong>xFoW Gaming</strong>, conosciuti anche come "Flags of War", rappresenta una delle realtà più consolidate nel panorama esports italiano. Fondati nel <strong>2010</strong>, abbiamo costruito oltre 15 anni di storia competitiva, crescendo insieme alla scena gaming nazionale e internazionale.
+                    </p>
+                    <p>
+                        La nostra avventura è iniziata con <strong>Call of Duty</strong>, il titolo che ancora oggi rappresenta il cuore pulsante della nostra organizzazione. Nel corso degli anni, ci siamo evoluti ed espansi, abbracciando nuove sfide e piattaforme, dal gaming console al mobile, mantenendo sempre alta la bandiera italiana nelle competizioni.
+                    </p>
+                    <p>
+                        Oggi, con oltre <strong>500 membri</strong> nella nostra community e team attivi in molteplici titoli competitivi, xFoW Gaming continua a essere un punto di riferimento per i giocatori italiani che cercano un ambiente professionale ma accogliente dove crescere e competere.
+                    </p>
+                </div>
+                
+                <div class="story-image">
+                    <div class="story-stats">
+                        <div class="stat-box">
+                            <div class="stat-value">2010</div>
+                            <div class="stat-label">Anno di Fondazione</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">500+</div>
+                            <div class="stat-label">Membri Attivi</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">100+</div>
+                            <div class="stat-label">Tornei Giocati</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Giochi Attivi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">I Nostri Valori</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="value-title">Eccellenza</h3>
+                    <p class="value-description">
+                        Puntiamo sempre al massimo, sia nelle competizioni che nella gestione della community. L'impegno costante e la dedizione sono alla base del nostro successo.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="value-title">Community</h3>
+                    <p class="value-description">
+                        Più che un team, siamo una famiglia. Crediamo nel supporto reciproco e nella crescita collettiva di ogni membro della nostra organizzazione.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="value-title">Integrità</h3>
+                    <p class="value-description">
+                        Fair play e rispetto sono fondamentali. Competiamo con onore, rispettando avversari e regole, rappresentando al meglio il gaming italiano.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="value-title">Innovazione</h3>
+                    <p class="value-description">
+                        Ci evolviamo costantemente, abbracciando nuove tecnologie e strategie per rimanere competitivi nel panorama gaming in continua evoluzione.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">La Nostra Missione</h2>
+            
+            <div class="mission-content">
+                <p class="mission-text">
+                    La missione di xFoW Gaming è creare un ambiente dove passione e professionalità si incontrano, offrendo ai giocatori italiani l'opportunità di crescere, competere e realizzare i propri sogni nel mondo degli esports.
+                </p>
+                
+                <p class="mission-highlight">
+                    "Dove tradizione incontra innovazione, dove ogni giocatore può diventare un campione"
+                </p>
+                
+                <p class="mission-text">
+                    Ci impegniamo a fornire strutture organizzative di alto livello, coaching professionale e supporto costante per permettere ai nostri membri di esprimere il massimo del loro potenziale competitivo, mantenendo sempre un ambiente inclusivo e stimolante.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Partnership Strategiche</h2>
+            
+            <div class="partnership-content">
+                <div class="partnership-logo">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                
+                <div class="partnership-details">
+                    <h3 class="partnership-title">Brescia eSports</h3>
+                    <p class="partnership-description">
+                        Dal 2024, xFoW Gaming è orgogliosamente in partnership con Brescia eSports, un'alleanza strategica che rafforza la nostra presenza nel panorama competitivo italiano e ci permette di offrire ancora più opportunità ai nostri giocatori.
+                    </p>
+                    
+                    <ul class="partnership-benefits">
+                        <li><i class="fas fa-check"></i> Accesso a tornei e competizioni esclusive</li>
+                        <li><i class="fas fa-check"></i> Supporto professionale e coaching avanzato</li>
+                        <li><i class="fas fa-check"></i> Opportunità di crescita nel panorama esports</li>
+                        <li><i class="fas fa-check"></i> Risorse condivise per eventi e training</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Photos Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Il Nostro Team</h2>
+            
+            <div class="team-gallery">
+                <div class="team-photo">
+                    <i class="fas fa-gamepad"></i>
+                    <p class="team-photo-caption">Call of Duty Squad</p>
+                </div>
+                <div class="team-photo">
+                    <i class="fas fa-crown"></i>
+                    <p class="team-photo-caption">Clash Royale Team</p>
+                </div>
+                <div class="team-photo">
+                    <i class="fas fa-shield-alt"></i>
+                    <p class="team-photo-caption">Destiny 2 Clan</p>
+                </div>
+                <div class="team-photo">
+                    <i class="fas fa-users"></i>
+                    <p class="team-photo-caption">Community Events</p>
+                </div>
+                <div class="team-photo">
+                    <i class="fas fa-trophy"></i>
+                    <p class="team-photo-caption">Tournament Victories</p>
+                </div>
+                <div class="team-photo">
+                    <i class="fas fa-star"></i>
+                    <p class="team-photo-caption">Special Moments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Diventa Parte della Storia</h2>
+            <p class="cta-text">
+                Unisciti a xFoW Gaming e scrivi con noi il futuro del gaming competitivo italiano
+            </p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary">Unisciti al Team</a>
+                <a href="community.html" class="btn btn-secondary">Esplora la Community</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>xFoW Gaming</h3>
+                <p>15 anni di eccellenza nel gaming competitivo italiano. Unisciti alla famiglia Flags of War!</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/xFoWGaminG" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/xfow_gaming" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Link Rapidi</h3>
+                <ul>
+                    <li><a href="about.html">Chi Siamo</a></li>
+                    <li><a href="teams.html">I Nostri Team</a></li>
+                    <li><a href="news.html">News & Aggiornamenti</a></li>
+                    <li><a href="contact.html">Contattaci</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Giochi</h3>
+                <ul>
+                    <li><a href="#">Call of Duty</a></li>
+                    <li><a href="#">Clash Royale</a></li>
+                    <li><a href="#">Destiny 2</a></li>
+                    <li><a href="#">Warzone</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Discord Server</a></li>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="#">Regolamento</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 xFoW Gaming - Flags of War. Tutti i diritti riservati. | In partnership con Brescia eSports 🇮🇹</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'var(--primary-dark)';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '1rem';
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.value-card, .stat-box, .team-photo').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
