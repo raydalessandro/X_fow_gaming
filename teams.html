@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I roster di xFoW Gaming - Scopri i nostri team di Call of Duty, Clash Royale, Destiny 2 e altri giochi competitivi.">
+    <title>Teams - xFoW Gaming | I Nostri Roster</title>
+    
+    <!-- Font Awesome per icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-blue: #00d4ff;
+            --accent-green: #00ff88;
+            --accent-red: #ff0040;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --italy-green: #009246;
+            --italy-red: #ce2b37;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+            background: linear-gradient(135deg, var(--italy-green), white, var(--italy-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 400"><rect fill="%230a0a0a"/><g opacity="0.1"><path fill="%2300d4ff" d="M0 200L80 180L160 220L240 190L320 210L400 200L480 180L560 220L640 190L720 210L800 200L880 180L960 220L1040 190L1120 210L1200 200L1280 180L1360 220L1440 190L1520 210L1600 200L1680 180L1760 220L1840 190L1920 210V400H0V200Z"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Game Tabs */
+        .game-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            background: var(--secondary-dark);
+            border: 2px solid transparent;
+            border-radius: 5px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            color: var(--primary-dark);
+            font-weight: bold;
+        }
+
+        /* Team Sections */
+        .team-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .team-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Team Header */
+        .team-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--secondary-dark);
+            border-radius: 10px;
+        }
+
+        .team-name {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .team-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .team-stat {
+            text-align: center;
+        }
+
+        .team-stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .team-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* Player Cards Grid */
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .player-card {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            position: relative;
+        }
+
+        .player-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .player-role-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .player-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-avatar {
+            font-size: 5rem;
+            color: var(--accent-blue);
+        }
+
+        .player-info {
+            padding: 1.5rem;
+        }
+
+        .player-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .player-gamertag {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .player-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            padding: 0.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .player-stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .player-stat-value {
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .player-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .player-social {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .player-social a {
+            width: 35px;
+            height: 35px;
+            background: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .player-social a:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+        }
+
+        /* Clan Stats for Clash Royale */
+        .clan-info {
+            background: var(--secondary-dark);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .clan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .clan-title {
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+        }
+
+        .clan-tag {
+            background: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: var(--accent-green);
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .clan-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .clan-stat-item {
+            background: var(--primary-dark);
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .clan-stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .clan-stat-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Join Team CTA */
+        .join-team-cta {
+            background: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark));
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 3rem 0;
+            border: 2px solid var(--accent-blue);
+        }
+
+        .join-team-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .join-team-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .game-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-button {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .team-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .clan-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">xFoW</div>
+                <span>xFoW Gaming</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Chi Siamo</a></li>
+                <li><a href="teams.html" class="active">Teams</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="contact.html">Contatti</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">I Nostri Teams</h1>
+        <p class="page-subtitle">Roster competitivi pronti a dominare ogni arena</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Game Tabs -->
+        <div class="game-tabs">
+            <button class="tab-button active" onclick="showTeam('cod')">
+                <i class="fas fa-crosshairs"></i> Call of Duty
+            </button>
+            <button class="tab-button" onclick="showTeam('clash')">
+                <i class="fas fa-crown"></i> Clash Royale
+            </button>
+            <button class="tab-button" onclick="showTeam('destiny')">
+                <i class="fas fa-shield-alt"></i> Destiny 2
+            </button>
+            <button class="tab-button" onclick="showTeam('warzone')">
+                <i class="fas fa-parachute-box"></i> Warzone
+            </button>
+        </div>
+
+        <!-- Call of Duty Team -->
+        <div id="cod" class="team-section active">
+            <div class="team-header">
+                <h2 class="team-name">Call of Duty Competitive Team</h2>
+                <p>Il nostro team principale dal 2010, veterani della scena competitiva italiana</p>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-value">20+</div>
+                        <div class="team-stat-label">Giocatori Attivi</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-value">50+</div>
+                        <div class="team-stat-label">Tornei Vinti</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-value">Top 3</div>
+                        <div class="team-stat-label">Ranking Italia</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="players-grid">
+                <!-- Player 1 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Captain</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-user-ninja"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Marco "Shadow" Rossi</h3>
+                        <p class="player-gamertag">@Shadow_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">2.1</div>
+                                <div class="player-stat-label">K/D</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">85%</div>
+                                <div class="player-stat-label">Win Rate</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">MVP</div>
+                                <div class="player-stat-label">2024</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player 2 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Sniper</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-user-ninja"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Luca "Eagle" Bianchi</h3>
+                        <p class="player-gamertag">@Eagle_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">1.9</div>
+                                <div class="player-stat-label">K/D</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">92%</div>
+                                <div class="player-stat-label">Accuracy</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">500+</div>
+                                <div class="player-stat-label">Clutches</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player 3 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Rusher</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-user-ninja"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Alessandro "Rush" Ferrari</h3>
+                        <p class="player-gamertag">@Rush_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">1.8</div>
+                                <div class="player-stat-label">K/D</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">300+</div>
+                                <div class="player-stat-label">SPM</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">80%</div>
+                                <div class="player-stat-label">Obj Time</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player 4 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Support</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-user-ninja"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Giulia "Medic" Romano</h3>
+                        <p class="player-gamertag">@Medic_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">1.5</div>
+                                <div class="player-stat-label">K/D</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">1000+</div>
+                                <div class="player-stat-label">Assists</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">90%</div>
+                                <div class="player-stat-label">Team Play</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clash Royale Team -->
+        <div id="clash" class="team-section">
+            <div class="team-header">
+                <h2 class="team-name">Clash Royale Elite Clan</h2>
+                <p>Uno dei clan più forti d'Italia con oltre 75,000 trofei</p>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-value">46/50</div>
+                        <div class="team-stat-label">Membri Attivi</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-value">75,782</div>
+                        <div class="team-stat-label">Trofei Clan</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-value">2,300</div>
+                        <div class="team-stat-label">Trofei Guerra</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clan-info">
+                <div class="clan-header">
+                    <h3 class="clan-title">xFoW GaminG COD</h3>
+                    <div class="clan-tag">#9CRPYU</div>
+                </div>
+                <div class="clan-stats-grid">
+                    <div class="clan-stat-item">
+                        <div class="clan-stat-number">46</div>
+                        <div class="clan-stat-text">Membri</div>
+                    </div>
+                    <div class="clan-stat-item">
+                        <div class="clan-stat-number">75,782</div>
+                        <div class="clan-stat-text">Clan Score</div>
+                    </div>
+                    <div class="clan-stat-item">
+                        <div class="clan-stat-number">2,300</div>
+                        <div class="clan-stat-text">War Trophies</div>
+                    </div>
+                    <div class="clan-stat-item">
+                        <div class="clan-stat-number">Legendary</div>
+                        <div class="clan-stat-text">League</div>
+                    </div>
+                    <div class="clan-stat-item">
+                        <div class="clan-stat-number">5,000+</div>
+                        <div class="clan-stat-text">Req. Trophies</div>
+                    </div>
+                    <div class="clan-stat-item">
+                        <div class="clan-stat-number">Italia</div>
+                        <div class="clan-stat-text">Location</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="players-grid">
+                <!-- Clash Player 1 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Leader</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-crown"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Francesco "King" Conte</h3>
+                        <p class="player-gamertag">Leader xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">7,500</div>
+                                <div class="player-stat-label">Trophies</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">20</div>
+                                <div class="player-stat-label">Max Wins</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">500+</div>
+                                <div class="player-stat-label">War Wins</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clash Player 2 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Co-Leader</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-crown"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Roberto "Wizard" Esposito</h3>
+                        <p class="player-gamertag">Co-Leader xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">7,200</div>
+                                <div class="player-stat-label">Trophies</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">18</div>
+                                <div class="player-stat-label">Max Wins</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">400+</div>
+                                <div class="player-stat-label">War Wins</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clash Player 3 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Elder</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-crown"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Stefano "Giant" Marino</h3>
+                        <p class="player-gamertag">Elder xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">6,800</div>
+                                <div class="player-stat-label">Trophies</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">15</div>
+                                <div class="player-stat-label">Max Wins</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">350+</div>
+                                <div class="player-stat-label">War Wins</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Destiny 2 Team -->
+        <div id="destiny" class="team-section">
+            <div class="team-header">
+                <h2 class="team-name">Destiny 2 Raid Team</h2>
+                <p>Guardiani esperti pronti per ogni sfida endgame</p>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-value">30+</div>
+                        <div class="team-stat-label">Guardiani Attivi</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-value">500+</div>
+                        <div class="team-stat-label">Raid Completati</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-value">Flawless</div>
+                        <div class="team-stat-label">Trials Weekly</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="players-grid">
+                <!-- Destiny Player 1 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Raid Leader</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-shield-alt"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Andrea "Titan" Greco</h3>
+                        <p class="player-gamertag">@Titan_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">1810</div>
+                                <div class="player-stat-label">Power</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">200+</div>
+                                <div class="player-stat-label">Raid Clears</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">50+</div>
+                                <div class="player-stat-label">Flawless</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-playstation"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destiny Player 2 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Hunter Main</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-shield-alt"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Paolo "Hunter" Ricci</h3>
+                        <p class="player-gamertag">@Hunter_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">1810</div>
+                                <div class="player-stat-label">Power</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">150+</div>
+                                <div class="player-stat-label">Raid Clears</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">3.5</div>
+                                <div class="player-stat-label">K/D Trials</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-playstation"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destiny Player 3 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Warlock Main</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-shield-alt"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Maria "Warlock" Costa</h3>
+                        <p class="player-gamertag">@Warlock_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">1810</div>
+                                <div class="player-stat-label">Power</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">180+</div>
+                                <div class="player-stat-label">Raid Clears</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">100+</div>
+                                <div class="player-stat-label">Sherpas</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-playstation"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Warzone Team -->
+        <div id="warzone" class="team-section">
+            <div class="team-header">
+                <h2 class="team-name">Warzone Battle Royale Squad</h2>
+                <p>Dominatori di Verdansk e Al Mazrah</p>
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <div class="team-stat-value">15+</div>
+                        <div class="team-stat-label">Squad Members</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-value">200+</div>
+                        <div class="team-stat-label">Vittorie Totali</div>
+                    </div>
+                    <div class="team-stat">
+                        <div class="team-stat-value">25%</div>
+                        <div class="team-stat-label">Win Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="players-grid">
+                <!-- Warzone Player 1 -->
+                <div class="player-card">
+                    <div class="player-role-badge">IGL</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-parachute-box"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Davide "Ghost" Lombardi</h3>
+                        <p class="player-gamertag">@Ghost_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">3.2</div>
+                                <div class="player-stat-label">K/D</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">150+</div>
+                                <div class="player-stat-label">Wins</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">30%</div>
+                                <div class="player-stat-label">Win Rate</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warzone Player 2 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Sniper</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-parachute-box"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Simone "Hawk" Martini</h3>
+                        <p class="player-gamertag">@Hawk_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">2.8</div>
+                                <div class="player-stat-label">K/D</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">120+</div>
+                                <div class="player-stat-label">Wins</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">1500m</div>
+                                <div class="player-stat-label">Longest Kill</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warzone Player 3 -->
+                <div class="player-card">
+                    <div class="player-role-badge">Support</div>
+                    <div class="player-image">
+                        <i class="player-avatar fas fa-parachute-box"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Valentina "Valk" Bruno</h3>
+                        <p class="player-gamertag">@Valk_xFoW</p>
+                        <div class="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-value">2.5</div>
+                                <div class="player-stat-label">K/D</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">100+</div>
+                                <div class="player-stat-label">Wins</div>
+                            </div>
+                            <div class="player-stat">
+                                <div class="player-stat-value">500+</div>
+                                <div class="player-stat-label">Revives</div>
+                            </div>
+                        </div>
+                        <div class="player-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitch"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Team CTA -->
+        <div class="join-team-cta">
+            <h2 class="join-team-title">Vuoi Entrare nel Team?</h2>
+            <p class="join-team-text">
+                Stiamo sempre cercando nuovi talenti per rafforzare i nostri roster. 
+                Se pensi di avere le skills e la dedizione necessarie, contattaci!
+            </p>
+            <a href="contact.html" class="btn btn-primary">Candidati Ora</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>xFoW Gaming</h3>
+                <p>15 anni di eccellenza nel gaming competitivo italiano. Unisciti alla famiglia Flags of War!</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/xFoWGaminG" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/xfow_gaming" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Link Rapidi</h3>
+                <ul>
+                    <li><a href="about.html">Chi Siamo</a></li>
+                    <li><a href="teams.html">I Nostri Team</a></li>
+                    <li><a href="news.html">News & Aggiornamenti</a></li>
+                    <li><a href="contact.html">Contattaci</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Giochi</h3>
+                <ul>
+                    <li><a href="#">Call of Duty</a></li>
+                    <li><a href="#">Clash Royale</a></li>
+                    <li><a href="#">Destiny 2</a></li>
+                    <li><a href="#">Warzone</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Discord Server</a></li>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="#">Regolamento</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 xFoW Gaming - Flags of War. Tutti i diritti riservati. | In partnership con Brescia eSports 🇮🇹</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'var(--primary-dark)';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '1rem';
+        });
+
+        // Team tabs functionality
+        function showTeam(teamId) {
+            // Hide all team sections
+            const sections = document.querySelectorAll('.team-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab-button');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected team section
+            document.getElementById(teamId).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.player-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
