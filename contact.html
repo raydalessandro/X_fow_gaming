@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contatta xFoW Gaming - Unisciti al team, proponi partnership o contattaci per informazioni.">
+    <title>Contatti - xFoW Gaming | Unisciti a Noi</title>
+    
+    <!-- Font Awesome per icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-blue: #00d4ff;
+            --accent-green: #00ff88;
+            --accent-red: #ff0040;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --italy-green: #009246;
+            --italy-red: #ce2b37;
+            --discord-purple: #5865F2;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+            background: linear-gradient(135deg, var(--italy-green), white, var(--italy-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 400"><rect fill="%230a0a0a"/><g opacity="0.1"><path fill="%2300d4ff" d="M0 200L80 180L160 220L240 190L320 210L400 200L480 180L560 220L640 190L720 210L800 200L880 180L960 220L1040 190L1120 210L1200 200L1280 180L1360 220L1440 190L1520 210L1600 200L1680 180L1760 220L1840 190L1920 210V400H0V200Z"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Contact Options Grid */
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-card {
+            background: var(--secondary-dark);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .contact-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-dark);
+            color: var(--accent-blue);
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+        }
+
+        /* Main Contact Section */
+        .contact-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            background: var(--secondary-dark);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        .form-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-dark);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 5px;
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .form-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .form-checkbox-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Contact Info Section */
+        .contact-info-section {
+            background: var(--secondary-dark);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .info-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--accent-blue);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            margin-right: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        .info-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .info-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .info-content a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-content a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Join Sections */
+        .join-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .join-card {
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .join-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .join-header {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .join-header h3 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .join-header p {
+            color: var(--primary-dark);
+            opacity: 0.9;
+        }
+
+        .join-content {
+            padding: 2rem;
+        }
+
+        .requirement-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .requirement-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .requirement-list li:last-child {
+            border-bottom: none;
+        }
+
+        .requirement-list i {
+            color: var(--accent-green);
+            margin-right: 1rem;
+        }
+
+        .clan-tag {
+            background: var(--primary-dark);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 1.5rem 0;
+            border: 1px solid var(--accent-blue);
+        }
+
+        .clan-tag-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .clan-tag-value {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--italy-green), white, var(--italy-red));
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .faq-icon {
+            color: var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-main {
+                grid-template-columns: 1fr;
+            }
+
+            .join-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">xFoW</div>
+                <span>xFoW Gaming</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Chi Siamo</a></li>
+                <li><a href="teams.html">Teams</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="contact.html" class="active">Contatti</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Contattaci</h1>
+        <p class="page-subtitle">Unisciti a xFoW Gaming o contattaci per partnership</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Contact Options -->
+        <div class="contact-options">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3 class="contact-title">Unisciti al Team</h3>
+                <p class="contact-description">
+                    Vuoi entrare nei nostri roster competitivi? Compila il form di candidatura qui sotto.
+                </p>
+                <a href="#application-form" class="contact-link">Candidati Ora</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <h3 class="contact-title">Discord Community</h3>
+                <p class="contact-description">
+                    Il modo più veloce per connetterti con noi. Unisciti al nostro server Discord!
+                </p>
+                <a href="#" class="contact-link">Unisciti a Discord</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="contact-title">Partnership</h3>
+                <p class="contact-description">
+                    Interessato a una partnership o sponsorizzazione? Contattaci per opportunità business.
+                </p>
+                <a href="#partnership-form" class="contact-link">Proponi Partnership</a>
+            </div>
+        </div>
+
+        <!-- Main Contact Section -->
+        <div class="contact-main">
+            <!-- Contact Form -->
+            <div class="contact-form-section" id="application-form">
+                <h2 class="form-title">Candidatura Team</h2>
+                <p class="form-subtitle">Compila il form per candidarti a uno dei nostri team competitivi</p>
+                
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Nome e Cognome *</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Gamertag / Username *</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Discord ID</label>
+                        <input type="text" class="form-input" placeholder="Username#0000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Gioco di Interesse *</label>
+                        <select class="form-select" required>
+                            <option value="">Seleziona un gioco</option>
+                            <option value="cod">Call of Duty</option>
+                            <option value="clash">Clash Royale</option>
+                            <option value="destiny">Destiny 2</option>
+                            <option value="warzone">Warzone</option>
+                            <option value="altro">Altro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Ruolo Preferito</label>
+                        <input type="text" class="form-input" placeholder="es. Sniper, Support, IGL...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Esperienza Competitiva</label>
+                        <textarea class="form-textarea" placeholder="Raccontaci della tua esperienza nel gaming competitivo, tornei giocati, team precedenti..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Statistiche (K/D, Rank, Trofei, etc.)</label>
+                        <input type="text" class="form-input" placeholder="Inserisci le tue statistiche principali">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Link Social / Clips</label>
+                        <input type="text" class="form-input" placeholder="Link a YouTube, Twitch, Twitter, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Perché vuoi unirti a xFoW Gaming?</label>
+                        <textarea class="form-textarea" placeholder="Dicci perché dovremmo sceglierti..."></textarea>
+                    </div>
+                    
+                    <div class="form-checkbox-group">
+                        <input type="checkbox" class="form-checkbox" id="terms" required>
+                        <label for="terms" class="form-checkbox-label">
+                            Accetto il regolamento della community e mi impegno a rispettare i valori di xFoW Gaming
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="form-button">Invia Candidatura</button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info-section">
+                <h2 class="info-title">Come Trovarci</h2>
+                
+                <div class="info-item">
+                    <i class="fas fa-envelope info-icon"></i>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@xfowgaming.com">info@xfowgaming.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fab fa-discord info-icon"></i>
+                    <div class="info-content">
+                        <h3>Discord Server</h3>
+                        <p>Il nostro hub principale per comunicazioni real-time</p>
+                        <p><a href="#">discord.gg/xFoWGaming</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fab fa-facebook info-icon"></i>
+                    <div class="info-content">
+                        <h3>Facebook</h3>
+                        <p>Seguici per news e aggiornamenti</p>
+                        <p><a href="https://www.facebook.com/xFoWGaminG" target="_blank">facebook.com/xFoWGaminG</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fab fa-instagram info-icon"></i>
+                    <div class="info-content">
+                        <h3>Instagram</h3>
+                        <p>Foto e stories dal team</p>
+                        <p><a href="https://www.instagram.com/xfow_gaming" target="_blank">@xfow_gaming</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt info-icon"></i>
+                    <div class="info-content">
+                        <h3>Base Operativa</h3>
+                        <p>Italia 🇮🇹</p>
+                        <p>In partnership con Brescia eSports</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Sections -->
+        <div class="join-sections">
+            <!-- Call of Duty -->
+            <div class="join-card">
+                <div class="join-header">
+                    <h3><i class="fas fa-crosshairs"></i> Call of Duty Team</h3>
+                    <p>Requisiti per unirsi</p>
+                </div>
+                <div class="join-content">
+                    <ul class="requirement-list">
+                        <li><i class="fas fa-check"></i> K/D minimo: 1.5</li>
+                        <li><i class="fas fa-check"></i> Esperienza competitiva precedente</li>
+                        <li><i class="fas fa-check"></i> Disponibilità per training 3x settimana</li>
+                        <li><i class="fas fa-check"></i> Microfono e comunicazione attiva</li>
+                        <li><i class="fas fa-check"></i> Età minima: 16 anni</li>
+                        <li><i class="fas fa-check"></i> Attitudine al team play</li>
+                    </ul>
+                    <a href="#application-form" class="contact-link">Candidati Ora</a>
+                </div>
+            </div>
+
+            <!-- Clash Royale -->
+            <div class="join-card">
+                <div class="join-header">
+                    <h3><i class="fas fa-crown"></i> Clash Royale Clan</h3>
+                    <p>Come unirsi al clan</p>
+                </div>
+                <div class="join-content">
+                    <ul class="requirement-list">
+                        <li><i class="fas fa-check"></i> Trofei minimi: 5000</li>
+                        <li><i class="fas fa-check"></i> Partecipazione guerre obbligatoria</li>
+                        <li><i class="fas fa-check"></i> Donazioni attive</li>
+                        <li><i class="fas fa-check"></i> Rispetto delle regole clan</li>
+                        <li><i class="fas fa-check"></i> Comunicazione via WhatsApp</li>
+                    </ul>
+                    <div class="clan-tag">
+                        <div class="clan-tag-label">Clan Tag</div>
+                        <div class="clan-tag-value">#9CRPYU</div>
+                    </div>
+                    <a href="#" class="contact-link">Richiedi Ingresso</a>
+                </div>
+            </div>
+
+            <!-- Destiny 2 -->
+            <div class="join-card">
+                <div class="join-header">
+                    <h3><i class="fas fa-shield-alt"></i> Destiny 2 Clan</h3>
+                    <p>Requisiti Guardiani</p>
+                </div>
+                <div class="join-content">
+                    <ul class="requirement-list">
+                        <li><i class="fas fa-check"></i> Power Level: 1800+</li>
+                        <li><i class="fas fa-check"></i> Esperienza Raid/Trials</li>
+                        <li><i class="fas fa-check"></i> PlayStation Network</li>
+                        <li><i class="fas fa-check"></i> Microfono obbligatorio</li>
+                        <li><i class="fas fa-check"></i> Attività settimanale</li>
+                        <li><i class="fas fa-check"></i> Spirito di squadra</li>
+                    </ul>
+                    <a href="#application-form" class="contact-link">Unisciti</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Domande Frequenti</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Come posso unirmi a xFoW Gaming?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Puoi unirti compilando il form di candidatura in questa pagina, specificando il gioco 
+                            di tuo interesse. Il nostro team valuterà la tua application e ti contatterà entro 48 ore. 
+                            In alternativa, puoi unirti al nostro Discord per conoscere meglio la community.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quali sono i requisiti minimi per entrare nel team?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            I requisiti variano per ogni gioco, ma in generale richiediamo: esperienza competitiva, 
+                            buone statistiche di gioco, disponibilità per training regolari, microfono per comunicare, 
+                            età minima di 16 anni e soprattutto spirito di squadra e rispetto per i compagni.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>xFoW Gaming partecipa a tornei ufficiali?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Sì! Partecipiamo regolarmente a tornei nazionali e internazionali. I nostri team di Call of Duty 
+                            e Clash Royale sono particolarmente attivi nel circuito competitivo. Organizziamo anche tornei 
+                            interni per la community.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Come posso proporre una partnership o sponsorizzazione?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Per proposte business, partnership o sponsorizzazioni, contattaci via email a info@xfowgaming.com 
+                            con una presentazione della tua proposta. Siamo sempre aperti a collaborazioni che possano 
+                            portare valore alla nostra community.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Offrite coaching o training per nuovi giocatori?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Sì! Abbiamo un programma Academy per i nuovi membri dove i nostri giocatori più esperti 
+                            offrono coaching e training. Organizziamo sessioni settimanali di training per ogni gioco 
+                            e siamo sempre disponibili ad aiutare i membri a migliorare.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quanto costa unirsi a xFoW Gaming?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            L'iscrizione a xFoW Gaming è completamente gratuita! Non richiediamo quote di iscrizione 
+                            o pagamenti mensili. Siamo una community basata sulla passione per il gaming e crediamo 
+                            che il talento e la dedizione siano più importanti del denaro.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>xFoW Gaming</h3>
+                <p>15 anni di eccellenza nel gaming competitivo italiano. Unisciti alla famiglia Flags of War!</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/xFoWGaminG" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/xfow_gaming" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Link Rapidi</h3>
+                <ul>
+                    <li><a href="about.html">Chi Siamo</a></li>
+                    <li><a href="teams.html">I Nostri Team</a></li>
+                    <li><a href="news.html">News & Aggiornamenti</a></li>
+                    <li><a href="contact.html">Contattaci</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Giochi</h3>
+                <ul>
+                    <li><a href="#">Call of Duty</a></li>
+                    <li><a href="#">Clash Royale</a></li>
+                    <li><a href="#">Destiny 2</a></li>
+                    <li><a href="#">Warzone</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Discord Server</a></li>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="#">Regolamento</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 xFoW Gaming - Flags of War. Tutti i diritti riservati. | In partnership con Brescia eSports 🇮🇹</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'var(--primary-dark)';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '1rem';
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+                
+                // Close other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Grazie per la tua candidatura! Ti contatteremo presto via email o Discord.');
+            this.reset();
+        });
+
+        // Smooth scroll to forms
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.contact-card, .join-card, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+                              </html>
